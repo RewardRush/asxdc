@@ -157,12 +157,9 @@ section {
     color: white;
     margin-bottom: 40px;
 }
-.hero-text h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 50px;
-    line-height: 1;
-    color: white;
+.hero-text #money-generator {
     margin: 0 0 45px;
+    width: 70%;
 }
 .hero-text .cashapp-logo {
     width: 35%;
