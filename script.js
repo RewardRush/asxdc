@@ -8,45 +8,31 @@ const toggleNav = () => {
 mobileNav.addEventListener("click", () => toggleNav());
 
 
-// Array to store transaction data
-const transactions = [];
+    // Sample data of recent transactions
+    const recentTransactions = [
+        "Transaction 23343: $50",
+        "Transaction 23344: $100",
+        "Transaction 23345: $75",
+        "Transaction 23346: $30",
+        "Transaction 23347: $200",
+        "Transaction 23348: $140",
+        "Transaction 23349: $30",
+        "Transaction 23350: $45",
+        "Transaction 23351: $30",
+    ];
 
-// Function to render a transaction
-function renderTransaction(transaction) {
-    const transactionElement = document.createElement('div');
-    transactionElement.className = 'transaction';
-    transactionElement.innerHTML = `
-        <p>ID: ${transaction.id}</p>
-        <p>Amount: $${transaction.amount}</p>
-        <p>Description: ${transaction.description}</p>
-    `;
-    return transactionElement;
-}
+    // Function to populate transaction list
+    function populateTransactionList() {
+        const transactionList = document.getElementById("transactionList");
+        transactionList.innerHTML = ""; // Clear previous list items
 
-// Function to render all transactions
-function renderTransactions() {
-    const transactionList = document.getElementById('transactionList');
-    transactionList.innerHTML = '';
+        recentTransactions.forEach(transaction => {
+            const listItem = document.createElement("li");
+            listItem.textContent = transaction;
+            listItem.classList.add("transaction-item");
+            transactionList.appendChild(listItem);
+        });
+    }
 
-    transactions.forEach(transaction => {
-        const transactionElement = renderTransaction(transaction);
-        transactionList.appendChild(transactionElement);
-    });
-}
-
-// Function to add a new transaction
-function addNewTransaction() {
-    const newTransaction = {
-        id: transactions.length + 1,
-        amount: Math.floor(Math.random() * 500) + 50,
-        description: `Payment recieved by User ${transactions.length + 234235}`
-    };
-    transactions.push(newTransaction);
-    renderTransactions();
-}
-
-// Initial render of transactions
-renderTransactions();
-
-// Simulate live scroll by adding a new transaction every 3 seconds
-setInterval(addNewTransaction, 3000);
+    // Call the function to initially populate the list
+    populateTransactionList();
